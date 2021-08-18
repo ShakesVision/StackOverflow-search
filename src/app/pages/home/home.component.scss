@@ -1,3 +1,36 @@
 .text-right {
     text-align: right;
 }
+.stats {
+    display: inline-block;
+}
+.stats span{
+    font-style: italic;
+    background: #4db6ac63;
+    padding: .5rem;
+    font-size: small;
+    border-radius: 10px;
+    // margin-right:10px;
+    display:inline-block;
+}
+.stats:not(.last-stat)::after{
+    content:'';
+    width: 10px;
+    height: 1px;
+    background:#1010108c;
+    display:inline-block;    
+}
+.search-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-wrap button {
+    padding: 3px 10px;
+}
+.search-wrap * {
+    font-size: large;
+}
+.boolean-based select {
+    width:100px;
+}

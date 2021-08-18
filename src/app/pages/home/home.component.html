@@ -1,13 +1,65 @@
 <div class="search-wrap">
   <input type="text" [(ngModel)]="searchTxt" name="searchtext" id="searchtext">
-<button (click)="search()">Search</button></div>
+  <button (click)="search()">Search</button>
+</div>
+<div class="controls">
+  <div class="text-based">
+    <h5>TEXT BASED</h5>
+    <input type="text" name="title" placeholder="title" id="">
+    <input type="text" name="body" placeholder="body" id="">
+    <input type="text" name="tagged" placeholder="tagged" id="">
+    <input type="text" name="nottagged" placeholder="nottagged" id="">
+    <input type="text" name="url" placeholder="url" id="">
+  </div>
+  <div class="number-based">
+    <h5>NUMBER BASED</h5>
+    <input type="number" name="answers" placeholder="answers" id="">
+    <input type="number" name="views" placeholder="views" id="">
+    <input type="number" name="user" placeholder="user" id="">
+  </div>
+  <div class="boolean-based">
+    <h5>BOOLEAN BASED</h5>
+    <label for="accepted">Accepted</label>
+    <select name="accepted" id="">
+      <option value=""></option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+    <label for="closed">Closed</label>
+    <select name="closed" id="">
+      <option value=""></option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+    <label for="migrated">Migrated</label>
+    <select name="migrated" id="">
+      <option value=""></option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+    <label for="notice">Notice</label>
+    <select name="notice" id="">
+      <option value=""></option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+    <label for="wiki">Wiki</label>
+    <select name="wiki" id="">
+      <option value=""></option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+  </div>
+</div>
 <div *ngIf="items.length>0" class="text-right">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
-<div *ngFor="let item of items | paginate: { itemsPerPage: count, currentPage: p }" class="card" (click)="gotoDetail(item.question_id)">
-  <h3> {{unescape(item.title)}} </h3>  
-  <p> {{item.score}} scores </p>
-  <p> {{item.answer_count}} answers </p>  
+<div *ngFor="let item of items | paginate: { itemsPerPage: count, currentPage: p }" class="card"
+  (click)="gotoDetail(item.question_id)">
+  <h3> {{unescape(item.title)}} </h3>
+  <div class="stats"><span> {{item.score}} votes </span></div>
+  <div class="stats"><span> {{item.answer_count}} answers </span></div>
+  <div class="stats last-stat"><span> {{item.view_count}} views </span></div>
   <p> {{unescape(item.owner.display_name)}} </p>
-  <div *ngFor="let tag of item.tags" class="tags card-small"> {{tag}} </div>
+  Tags: <div *ngFor="let tag of item.tags" class="tags card-small"> {{tag}} </div>
 </div>

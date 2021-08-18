@@ -18,7 +18,17 @@ export class HomeComponent implements OnInit {
   ngOnInit() {    
   }
   search() {
+    let additionalParams:string = "";
+    let controlNames = ["title","body","tagged","nottagged","url","answers","views","user","accepted","closed","migrated","notice","wiki"];    
+    controlNames.forEach(cN => {
+      let e = document.getElementsByName(cN)[0];
+      if(e["value"] !=="") {
+        console.log(e["value"]);
+        additionalParams += `&${cN}=${e["value"]}`;
+      }
+    });
   let url = `https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&order=desc&sort=votes&q=${encodeURIComponent(this.searchTxt)}`;
+  url+=additionalParams;
     this.http.get(url).subscribe((res:any)=>{
       console.log(url,res);
       this.items = res.items;

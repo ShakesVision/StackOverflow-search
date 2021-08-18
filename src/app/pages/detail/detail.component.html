@@ -1,0 +1,11 @@
+<button class="card-small" (click)="goBack()">Back</button>
+<div *ngFor="let item of items" class="card-wrapper">
+  <div class="card" (click)="seeOnSO(item.link)">
+  <div class="author-wrap margin-bottom"> <img class="avatar" [src]="item.owner.profile_image"
+      [alt]="item.owner.display_name+' profile image'"> <strong> {{unescape(item.owner.display_name)}} </strong> <span
+      class="grey"> on <span class="date"> {{item.creation_date * 1000| date}}.</span> <span *ngIf="item.last_edit_date"
+        class="lastEdit"> Last edit: <span class="date">{{item.last_edit_date * 1000| date}}.</span></span></span></div>
+  <h2> {{unescape(item.title)}} </h2>
+  <div class="q-body" [innerHTML]="item.body"></div>
+  <div *ngFor="let tag of item.tags" class="tags card-small"> {{tag}} </div>
+</div></div>

@@ -1,0 +1,7 @@
+<button (click)="search(url)">Search</button>
+<div *ngFor="let item of items"  class="card" (click)="gotoDetail(item.question_id)">
+  <h3> {{unescape(item.title)}} </h3>  
+  <p> {{item.view_count}} </p>
+  <p> {{unescape(item.owner.display_name)}} </p>
+  <div *ngFor="let tag of item.tags" class="tags card-small"> {{tag}} </div>
+</div>

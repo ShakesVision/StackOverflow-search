@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  items = [];
-  url = 'https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=votes&q=angular-cli%20not%20available&site=stackoverflow';
+  items = [];  
+  p: number = 1;
+  count: number = 10;
+  searchTxt:string;
+
   constructor(private http:HttpClient,private router:Router) { }
 
   ngOnInit() {    
   }
-  search(url) {
-    this.http.get(this.url).subscribe((res:any)=>{
-      console.log(res);
+  search() {
+  let url = `https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&order=desc&sort=votes&q=${encodeURIComponent(this.searchTxt)}`;
+    this.http.get(url).subscribe((res:any)=>{
+      console.log(url,res);
       this.items = res.items;
     });
   }
@@ -26,6 +30,9 @@ export class HomeComponent implements OnInit {
     return doc.documentElement.textContent;
   }
   gotoDetail(qid:number){
+    /* let navExtra: NavigationExtras = {
+      state: { qid }
+    }; */
     this.router.navigate(['/detail',qid]);
   }
 

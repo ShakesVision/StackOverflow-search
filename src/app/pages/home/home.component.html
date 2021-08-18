@@ -1,7 +1,13 @@
-<button (click)="search(url)">Search</button>
-<div *ngFor="let item of items"  class="card" (click)="gotoDetail(item.question_id)">
+<div class="search-wrap">
+  <input type="text" [(ngModel)]="searchTxt" name="searchtext" id="searchtext">
+<button (click)="search()">Search</button></div>
+<div *ngIf="items.length>0" class="text-right">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<div *ngFor="let item of items | paginate: { itemsPerPage: count, currentPage: p }" class="card" (click)="gotoDetail(item.question_id)">
   <h3> {{unescape(item.title)}} </h3>  
-  <p> {{item.view_count}} </p>
+  <p> {{item.score}} scores </p>
+  <p> {{item.answer_count}} answers </p>  
   <p> {{unescape(item.owner.display_name)}} </p>
   <div *ngFor="let tag of item.tags" class="tags card-small"> {{tag}} </div>
 </div>

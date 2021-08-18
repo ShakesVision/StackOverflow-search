@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseService } from './services/RouteReuseService';
 
 
 @NgModule({
@@ -17,9 +21,14 @@ import { HomeComponent } from './pages/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: RouteReuseService
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

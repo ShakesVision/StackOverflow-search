@@ -4,7 +4,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [  
-  {path:'home',component:HomeComponent},
+  {path:'home',component:HomeComponent, data: {reuse: true}},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'detail/:qid',component:DetailComponent}
 ];

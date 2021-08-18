@@ -16,6 +16,8 @@
     <input type="number" name="answers" placeholder="answers" id="">
     <input type="number" name="views" placeholder="views" id="">
     <input type="number" name="user" placeholder="user" id="">
+    <input type="number" name="page" placeholder="page" id="">
+    <input type="number" name="pagesize" placeholder="pagesize" id="">
   </div>
   <div class="boolean-based">
     <h5>BOOLEAN BASED</h5>
@@ -49,6 +51,23 @@
       <option value="true">true</option>
       <option value="false">false</option>
     </select>
+  </div>
+  <div class="sort-options">
+    <h5>SORTING CONTROLS</h5>
+    <label for="order">Order</label>
+    <select name="order" id="">
+      <option value=""></option>
+      <option value="asc">asc</option>
+      <option value="desc">desc</option>
+    </select>
+    <label for="sort">Sort By</label>
+    <select name="sort" id="">
+      <option value=""></option>
+      <option value="activity">activity</option>
+      <option value="votes">votes</option>
+      <option value="creation">creation</option>
+      <option value="relevance">relevance</option>
+    </select>    
   </div>
 </div>
 <div *ngIf="items.length>0" class="text-right">

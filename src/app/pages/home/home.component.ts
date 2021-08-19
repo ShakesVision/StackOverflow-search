@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   pageChanged(event) {
     console.log(event);
     this.p = event;
-    if(this.p%2==0 && this.has_more) {
+    if(this.p%3==0 && this.has_more) {
       console.log("Load now...");
       this.requestPcount++;
       this.url+="&page="+this.requestPcount;

@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This is an assignment project for Teamwave by Shakeeb Ahmad. 
 
-Details:
+**Details:**
 
 - Uses two APIs: [Advance Search](https://api.stackexchange.com/docs/advanced-search) and [Question Details](https://api.stackexchange.com/docs/questions-by-ids)
 - Shows the list and detail pages

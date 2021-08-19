@@ -71,7 +71,7 @@
   </div>
 </div>
 <div *ngIf="items.length>0" class="text-right">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageBound($event)"></pagination-controls>
 </div>
 <div *ngFor="let item of items | paginate: { itemsPerPage: count, currentPage: p }" class="card"
   (click)="gotoDetail(item.question_id)">

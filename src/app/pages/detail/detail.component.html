@@ -1,4 +1,4 @@
-<button class="card-small" (click)="goBack()">Back</button>
+<button class="card-small" style="cursor:pointer" (click)="goBack()">Back</button>
 <div *ngFor="let item of items" class="card-wrapper">
   <div class="card" (click)="seeOnSO(item.link)">
   <div class="author-wrap margin-bottom"> <img class="avatar" [src]="item.owner.profile_image"

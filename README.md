@@ -15,6 +15,7 @@ Details:
 - Supports sorting by 4 params, and sorting order (ascending, descending)
 - Neat UI
 - Uses only 1 library ngx-pagination
+- Concepts used: router.navigate with params, ngFor, ngIf, ngModel, global styles, state management using RouteReuse, dynamic value fetch from dom
 
 ## About Developer
 

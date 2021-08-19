@@ -11,13 +11,17 @@ export class HomeComponent implements OnInit {
   items = [];  
   p: number = 1;
   count: number = 10;
+  requestPcount: number = 1;
+  has_more:boolean;
   searchTxt:string;
+  url:string;
 
   constructor(private http:HttpClient,private router:Router) { }
 
   ngOnInit() {    
   }
   search() {
+    this.reset();
     let additionalParams:string = "";
     let controlNames = ["title","body","tagged","nottagged","url","answers","views","user","accepted","closed","migrated","notice","wiki","page","pagesize","sort","order"];
     controlNames.forEach(cN => {
@@ -27,12 +31,19 @@ export class HomeComponent implements OnInit {
         additionalParams += `&${cN}=${e["value"]}`;
       }
     });
-  let url = `https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&q=${encodeURIComponent(this.searchTxt)}`;
-  url+=additionalParams;
-    this.http.get(url).subscribe((res:any)=>{
-      console.log(url,res);
+  this.url = `https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&q=${encodeURIComponent(this.searchTxt)}`;
+  this.url+=additionalParams;
+    this.http.get(this.url).subscribe((res:any)=>{
+      console.log(this.url,res);
+      this.has_more = res.has_more;
       this.items = res.items;
     });
+  }
+  reset() {
+    this.items = [];
+    this.requestPcount = 1;
+    this.p = 1;
+    this.has_more = false;    
   }
   unescape(value){
     //html entity unescape
@@ -44,6 +55,22 @@ export class HomeComponent implements OnInit {
       state: { qid }
     }; */
     this.router.navigate(['/detail',qid]);
+  }
+  pageChanged(event) {
+    console.log(event);
+    this.p = event;
+    if(this.p%2==0 && this.has_more) {
+      console.log("Load now...");
+      this.requestPcount++;
+      this.url+="&page="+this.requestPcount;
+      this.http.get(this.url).subscribe((res:any)=>{
+        console.log(this.url,res);
+        this.items = [...this.items,...res.items];
+      });
+    }
+  }
+  pageBound(event) {
+    console.log(event);
   }
 
 }

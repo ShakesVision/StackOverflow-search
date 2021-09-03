@@ -1,10 +1,10 @@
-# TeamwaveTest
+# StackOverflow-search using Angular
 
 You can access the auto-deployed live demo (PWA) here: https://shakesvision.github.io/StackOverflow-search/
 
 ## About
 
-This is an assignment project for Teamwave by Shakeeb Ahmad. 
+This is an assignment project in Angular by Shakeeb Ahmad. 
 
 **Details:**
 
@@ -23,7 +23,7 @@ Shakeeb Ahmad. Blog: www.shakeeb.in
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source fileSs.
 
 ## Build
 
